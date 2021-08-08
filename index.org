@@ -1,0 +1,235 @@
+#+title: Equity and Equity Markets
+#+author: Matt Brigida, Ph.D.
+#+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
+
+* Definition of Equity
+
+Remember:
+
+#+begin_example
+Equity holders have a residual claim on the firm's cash flow.  So the cash flow paid to shareholders is simply whaever is left over after paying the firm's expenses and what the bondholders are owed.
+#+end_example
+
+
+
+* Constant Growth Rate Stock Value Calculator
+
+#+BEGIN_EXPORT html
+
+<script>
+
+var calculate = function() {
+
+  var roe = Number(document.getElementById("roe").value);
+  var b = Number(document.getElementById("b").value);
+
+  var sgr = (roe * b) / (1 - roe * b);
+  
+  document.getElementById("out_sgr").innerHTML = sgr.toFixed(4);
+
+}
+
+</script>
+
+<body class="all">
+  <h3>
+    SGR Calculator
+  </h3>
+
+  <div class="row">
+
+    <div class="column">
+      <table style="width:100%">
+        <tr>
+          <th align="left">ROE:</th>
+          <th><input id="roe" value="0.15" style="width: 50px"></th>
+        </tr>
+        <tr>
+          <th align="left">Plowback Ratio:</th>
+          <th><input id="b" value="0.2" style="width: 50px"></th>
+        </tr>
+      </table>
+      <button onclick="calculate()">
+        Calculate.
+      </button>
+    </div>
+
+    <div class="column">
+    <p><b>SGR: <span id="out_sgr"></span></b></p>
+    </div>
+
+  </div>
+  <br>
+  <br>
+  <br>
+</body>
+
+#+END_EXPORT
+
+#+BEGIN_EXPORT html
+<style>
+.fiddle iframe {
+height: 300px //you can manually change this height
+}
+</style>
+
+<div class="fiddle">
+<script async src="https://jsfiddle.net/mbkr1/jnzv5de1/embed/result,js,html,css/dark/"></script>
+</div>
+#+END_EXPORT
+
+#+BEGIN_EXPORT html :eval no
+<iframe width="100%" height="300" src="https://jsfiddle.net/mbkr1/jnzv5de1/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
+#+END_EXPORT
+
+
+
+ 
+* Self-Quiz Questions
+
+
+#+begin_export html
+<script>
+var submitAnswer1 = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+   // alert('please select choice answer');
+document.getElementById("p1").innerHTML = "Choose your answer.";
+document.getElementById("p1").style.backgroundColor = "white";
+  } else if ( val == "Correct" ) {
+//    alert('Answer is correct !');
+document.getElementById("p1").innerHTML = "Correct!";
+document.getElementById("p1").style.backgroundColor = "#90EE90";
+  } else {
+//    alert('Answer is wrong');
+document.getElementById("p1").innerHTML = "Wrong";
+document.getElementById("p1").style.backgroundColor = "#ff6666";
+  }
+};
+</script>
+
+
+
+<p>1. Assume Utica Boiler Inc has a 15% ROE and 40% payout ratio.  What is the maximum rate the firm can grow while maintining a constant total debt ratio and not selling any new stock?</p>
+<form >
+<input type="radio" name="choice" value="Incorrect"> 1.44%<br>
+<input type="radio" name="choice" value="Correct"> 6.38%<br>
+<input type="radio" name="choice" value="Incorrect"> 15.00%<br>
+<input type="radio" name="choice" value="Incorrect"> 33.12%
+</form>
+<button onclick="submitAnswer1()">Submit Answer</button>
+<span id="p1"></span>
+<br>
+#+end_export
+
+
+#+begin_export html
+<script>
+var submitAnswer2 = function() {
+
+  var radios = document.getElementsByName('choice2');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+   // alert('please select choice answer');
+document.getElementById("p2").innerHTML = "Choose your answer.";
+document.getElementById("p2").style.backgroundColor = "white";
+  } else if ( val == "Correct" ) {
+//    alert('Answer is correct !');
+document.getElementById("p2").innerHTML = "Correct!";
+document.getElementById("p2").style.backgroundColor = "#90EE90";
+  } else {
+//    alert('Answer is wrong');
+document.getElementById("p2").innerHTML = "Wrong";
+document.getElementById("p2").style.backgroundColor = "#ff6666";
+  }
+};
+</script>
+
+
+<br>
+<p>2. Assume McCauley Ski Inc. has a 12% ROA and 20% payout ratio.  What is the maximum rate the firm can grow using only internal financing?</p>
+<form >
+<input type="radio" name="choice2" value="Incorrect"> -4.51%<br>
+<input type="radio" name="choice2" value="Incorrect"> 0.00%<br>
+<input type="radio" name="choice2" value="Correct"> 2.46%<br>
+<input type="radio" name="choice2" value="Incorrect"> 12.55%
+</form>
+<button onclick="submitAnswer2()">Submit Answer</button>
+<span id="p2"></span>
+#+end_export
+
+#+begin_export html
+<script>
+var submitAnswer3 = function() {
+
+  var radios = document.getElementsByName('choice3');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+   // alert('please select choice answer');
+document.getElementById("p3").innerHTML = "Choose your answer.";
+document.getElementById("p3").style.backgroundColor = "white";
+  } else if ( val == "Correct" ) {
+//    alert('Answer is correct !');
+document.getElementById("p3").innerHTML = "Correct!";
+document.getElementById("p3").style.backgroundColor = "#90EE90";
+  } else {
+//    alert('Answer is wrong');
+document.getElementById("p3").innerHTML = "Wrong";
+document.getElementById("p3").style.backgroundColor = "#ff6666";
+  }
+};
+</script>
+
+
+<br>
+<p>3.  If a firm increases its profit margin, its IGR and SGR _______.  </p>
+<form >
+<input type="radio" name="choice3" value="Correct"> Increase<br>
+<input type="radio" name="choice3" value="Incorrect"> Decrease<br>
+<input type="radio" name="choice3" value="Incorrect"> Are unchanged
+</form>
+<button onclick="submitAnswer3()">Submit Answer</button>
+<span id="p3"></span>
+#+end_export
+
+* [[https://en.wikipedia.org/wiki/Flesch%25E2%2580%2593Kincaid_readability_tests][Reading Ease Score]]
+
+#+BEGIN_SRC elisp :results output :exports results
+(print (writegood-reading-ease))
+#+END_SRC
+
+#+RESULTS:
+: 
+: "Flesch-Kincaid reading ease score: 77.93 Fairly easy (7th grade)"
+
+#+BEGIN_SRC elisp :results output :exports results
+(print (writegood-grade-level))
+#+END_SRC
+
+#+RESULTS:
+: 
+: "Flesch-Kincaid grade level score: 4.77"
+
