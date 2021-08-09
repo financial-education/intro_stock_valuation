@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-08-09 Mon 16:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Equity and Equity Markets</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Matt Brigida, Ph.D." />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/htmlize.css"/>
+<link rel="stylesheet" type="text/css" href="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/css/readtheorg.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/lib/js/jquery.stickytableheaders.min.js"></script>
+<script type="text/javascript" src="https://fniessen.github.io/org-html-themes/src/readtheorg_theme/js/readtheorg.js"></script>
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:1f739d935676111cfff4b4693e3816e664797050&amp;dn=gpl-3.0.txt GPL-v3-or-Later
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Equity and Equity Markets</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org9b4de57">1. Definition and Value of Equity</a></li>
+<li><a href="#org29ca51c">2. Discounted Dividends</a></li>
+<li><a href="#org8b4c1fb">3. Cash Flow Structure</a></li>
+<li><a href="#org5845b47">4. Constant Dividends</a></li>
+<li><a href="#org8ae9864">5. Constant Dividends Example</a></li>
+<li><a href="#org83669a4">6. Constant Growth Rate in Dividends</a></li>
+<li><a href="#org7089faf">7. Constant Growth Rate Example</a></li>
+<li><a href="#org17a2296">8. Example Continued</a></li>
+<li><a href="#org4761870">9. Nonconstant Growth in Dividends</a></li>
+<li><a href="#org4f82720">10. Example of Nonconstant Growth</a></li>
+<li><a href="#org67d8ed1">11. Constant Growth Rate Stock Value Calculator</a></li>
+<li><a href="#orgc1584ee">12. Self-Quiz Questions</a></li>
+<li><a href="#orgc9369a4">13. Reading Ease Score</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9b4de57" class="outline-2">
+<h2 id="org9b4de57"><span class="section-number-2">1.</span> Definition and Value of Equity</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Remember:
+</p>
+
+<blockquote>
+<p>
+Equity holders have a residual claim on the firm's cash flow.  So the cash flow paid to shareholders is simply whaever is left over after paying the firm's expenses and what the bondholders are owed.
+</p>
+</blockquote>
+
+<p>
+Therefore the value of this equity is simply:
+</p>
+
+<blockquote>
+<p>
+The present value of the firm's expected residual cash flows, discounted at a risk appropriate rate.
+</p>
+</blockquote>
+
+<p>
+Equity also affords ownership, but here we will ignore any value that this imparts.  Ownership would only be relevant if we were to buy a block of stock large enough to affect the composition of the Board of Directors.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org29ca51c" class="outline-2">
+<h2 id="org29ca51c"><span class="section-number-2">2.</span> Discounted Dividends</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The value of any asset is simply the present value of the future cash flows you expect to receive from the asset.
+</p>
+
+<ul class="org-ul">
+<li>In the case of stock, this means the present value of expected future dividends.</li>
+</ul>
+
+<p>
+But what if the stock doesn't pay dividends?
+</p>
+
+<ul class="org-ul">
+<li>All stock will at some point return cash back to stockholders (i.e., pay dividends).  It is common for young firms to keep cash as retained earnings to fuel growth.  Eventually though, like Apple Inc., every company returns cash to shareholders.</li>
+
+<li>Another way to think about it is, how much would you pay for a stock for which you never expected to receive cash?  Certainly nothing.</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org8b4c1fb" class="outline-2">
+<h2 id="org8b4c1fb"><span class="section-number-2">3.</span> Cash Flow Structure</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The first step in valuing a stock by discounted dividends is to project what the future dividends will be.  It is common to divide possible future structures into 3 cases.
+</p>
+
+<ol class="org-ol">
+<li>Constant dividends.</li>
+<li>Constant <b>growth rate</b> in dividends.</li>
+<li>Nonconstant growth in dividends.</li>
+</ol>
+</div>
+</div>
+
+
+
+<div id="outline-container-org5845b47" class="outline-2">
+<h2 id="org5845b47"><span class="section-number-2">4.</span> Constant Dividends</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+If we assume a stock's dividends will be constant, and since companies are infinitely lived, the dividends are in the form of a perpetuity.  Letting \(D\) be the constant dividend and \(k\) be the discount rate we'll apply to the dividends (\(k\) comes from something like the Capital Asset Pricing Model, or [CAPM](<a href="http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model">http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model</a>), and is a function of the risk in the cash flows), we can value the stock as:
+</p>
+
+<p>
+\(V_0 = \sum_{t=1}^\infty {\frac{D}{(1+k)^t}} = \frac{D}{k}\)
+</p>
+
+<p>
+where \(V_0\) is the value of the stock today (time 0).
+</p>
+
+<ul class="org-ul">
+<li>Note this uses the formula for the present value of a perpetuity.</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org8ae9864" class="outline-2">
+<h2 id="org8ae9864"><span class="section-number-2">5.</span> Constant Dividends Example</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+For all the following examples say the stock pays annual dividends.  Say we expect a stock to pay a constant dividend of \$10 per share.  The discount rate is 10%. Then the stock value is:
+</p>
+
+<ul class="org-ul">
+<li>$V<sub>0</sub> = \frac{D}{k} = \frac{\$10}{0.1} = \\(100\)</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org83669a4" class="outline-2">
+<h2 id="org83669a4"><span class="section-number-2">6.</span> Constant Growth Rate in Dividends</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+A more realistic assumption is to say that dividends will grow at a constant rate \(g\).  If this is the case then the value of the stock is:
+</p>
+
+<p>
+\(V_0 = \sum_{t=1}^\infty {\frac{D_1(1+g)^t}{(1+k)^t}} = \frac{D_1}{k-g}\)
+</p>
+
+<p>
+assuming \(k>g\).  Note if \(k<g\) then the sum would be \(\infty\) and the last equality would not hold.  Note also we cannot have \(k = g\) or you would divide by \(0\) which is undefined.  
+</p>
+
+<ul class="org-ul">
+<li>This formula is the present value of a growing perpetuity.</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org7089faf" class="outline-2">
+<h2 id="org7089faf"><span class="section-number-2">7.</span> Constant Growth Rate Example</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Say a firm will pay a \$5 dividend next year, and dividends are expected to grow at 8% forever.  The discount rate is 12%.  Then today's value of the stock is:
+</p>
+
+<ul class="org-ul">
+<li>$V<sub>0</sub> = \frac{D_1}{k - g} = \frac{\$5}{0.12 - 0.08} = \\(125\)</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org17a2296" class="outline-2">
+<h2 id="org17a2296"><span class="section-number-2">8.</span> Example Continued</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Sometimes this is asked in a trickier fashion.  Instead, say the firm <b>just paid</b> a \$5 dividend.  Again, assume dividends are expected to grow at 8% forever, and the discount rate is 12%.  In this case, what is the value of the stock today?
+</p>
+
+<ul class="org-ul">
+<li>To use the present value of a perpetuity formula, we need next year's dividend.  We can find it easily because it will be 8% greater than last year's.  So we have $D<sub>1</sub> = D<sub>0</sub>(1+g) = \$5(1.08) = \\(5.40\).  This uses the time-value-of-money formula \(FV = PV(1+r)^t\).</li>
+
+<li>Now we can find the value of the stock with: $V<sub>0</sub>=\frac{D_1}{k-g}=\frac{\$5.40}{0.12-0.08} = \\(135\)</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org4761870" class="outline-2">
+<h2 id="org4761870"><span class="section-number-2">9.</span> Nonconstant Growth in Dividends</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+This covers all other cases.  The most common scenarios are:
+</p>
+
+<ol class="org-ol">
+<li>The firm pays no dividend for a number of years, after which point the firm pays a dividend which grows at some constant rate.</li>
+
+<li>The firm's dividends grow at rate \(g_1\) for a number of years, then grow at \(g_2\) thereafter.</li>
+</ol>
+</div>
+</div>
+
+
+
+<div id="outline-container-org4f82720" class="outline-2">
+<h2 id="org4f82720"><span class="section-number-2">10.</span> Example of Nonconstant Growth</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+As an example of scenario 1, say a firm is not expected to pay dividends for the next 8 years.  In year 9 the firm will pay a \$5 dividend which is expected to grow at 3% thereafter.  The discount rate \(k\) is 7%.
+</p>
+
+<ul class="org-ul">
+<li>We can use the formula for the value of a growing perpetuity to find the value of the stock in year 8.  $V<sub>8</sub> = \frac{D_9}{k-g} = \frac{\$5}{0.07 - 0.03} = \\(125\)</li>
+
+<li>Now we just need to discount this value back to today: $V<sub>0</sub> = \frac{\$125}{(1.07^8)} = \\(72.75\)</li>
+</ul>
+</div>
+</div>
+
+
+
+<div id="outline-container-org67d8ed1" class="outline-2">
+<h2 id="org67d8ed1"><span class="section-number-2">11.</span> Constant Growth Rate Stock Value Calculator</h2>
+<div class="outline-text-2" id="text-11">
+
+<script>
+
+var calculate = function() {
+
+  var dividend_next_year = Number(document.getElementById("dividend").value);
+  var g = Number(document.getElementById("g").value);
+  var r = Number(document.getElementById("r").value);
+
+  var price = dividend_next_year / (r - g);
+  
+  document.getElementById("out_price").innerHTML = price.toFixed(2);
+
+}
+
+</script>
+
+<body class="all">
+  <h3>
+    Stock Price Calculator (Constant Gowth)
+  </h3>
+
+  <div class="row">
+
+    <div class="column">
+      <table style="width:100%">
+        <tr>
+          <th align="left">Dividend Next Year:</th>
+          <th><input id="dividend" value="5" style="width: 50px"></th>
+        </tr>
+        <tr>
+          <th align="left">Dividend Growth Rate:</th>
+          <th><input id="g" value="0.07" style="width: 50px"></th>
+        </tr>
+	<tr>
+	<th align="left">Discount Rate:</th>
+        <th><input id="r" value="0.1" style="width: 50px"></th>
+        </tr>
+      </table>
+      <button onclick="calculate()">
+        Calculate.
+      </button>
+    </div>
+
+    <div class="column">
+    <p><b>Stock Price: <span id="out_price"></span></b></p>
+    </div>
+
+  </div>
+  <br>
+  <br>
+  <br>
+</body>
+</div>
+</div>
+
+
+
+
+<div id="outline-container-orgc1584ee" class="outline-2">
+<h2 id="orgc1584ee"><span class="section-number-2">12.</span> Self-Quiz Questions</h2>
+<div class="outline-text-2" id="text-12">
+<script>
+var submitAnswer1 = function() {
+
+  var radios = document.getElementsByName('choice');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+   // alert('please select choice answer');
+document.getElementById("p1").innerHTML = "Choose your answer.";
+document.getElementById("p1").style.backgroundColor = "white";
+  } else if ( val == "Correct" ) {
+//    alert('Answer is correct !');
+document.getElementById("p1").innerHTML = "Correct!";
+document.getElementById("p1").style.backgroundColor = "#90EE90";
+  } else {
+//    alert('Answer is wrong');
+document.getElementById("p1").innerHTML = "Wrong";
+document.getElementById("p1").style.backgroundColor = "#ff6666";
+  }
+};
+</script>
+
+
+
+<p>1. A stock pays a constant annual dividend of $10.  Its discount rate is 10%.  What is the value of the stock today?</p>
+<form >
+<input type="radio" name="choice" value="Incorrect"> $23<br>
+<input type="radio" name="choice" value="Incorrect"> $63<br>
+<input type="radio" name="choice" value="Correct"> $100<br>
+<input type="radio" name="choice" value="Incorrect"> $1000
+</form>
+<button onclick="submitAnswer1()">Submit Answer</button>
+<span id="p1"></span>
+<br>
+
+
+<script>
+var submitAnswer2 = function() {
+
+  var radios = document.getElementsByName('choice2');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+   // alert('please select choice answer');
+document.getElementById("p2").innerHTML = "Choose your answer.";
+document.getElementById("p2").style.backgroundColor = "white";
+  } else if ( val == "Correct" ) {
+//    alert('Answer is correct !');
+document.getElementById("p2").innerHTML = "Correct!";
+document.getElementById("p2").style.backgroundColor = "#90EE90";
+  } else {
+//    alert('Answer is wrong');
+document.getElementById("p2").innerHTML = "Wrong";
+document.getElementById("p2").style.backgroundColor = "#ff6666";
+  }
+};
+</script>
+
+
+<br>
+<p>2. Assume McCauley Ski Inc. has a 12% ROA and 20% payout ratio.  What is the maximum rate the firm can grow using only internal financing?</p>
+<form >
+<input type="radio" name="choice2" value="Incorrect"> -4.51%<br>
+<input type="radio" name="choice2" value="Incorrect"> 0.00%<br>
+<input type="radio" name="choice2" value="Correct"> 2.46%<br>
+<input type="radio" name="choice2" value="Incorrect"> 12.55%
+</form>
+<button onclick="submitAnswer2()">Submit Answer</button>
+<span id="p2"></span>
+
+<script>
+var submitAnswer3 = function() {
+
+  var radios = document.getElementsByName('choice3');
+  var val= "";
+  for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+         val = radios[i].value; 
+         break;
+       }
+  }
+  
+  if (val == "" ) {
+   // alert('please select choice answer');
+document.getElementById("p3").innerHTML = "Choose your answer.";
+document.getElementById("p3").style.backgroundColor = "white";
+  } else if ( val == "Correct" ) {
+//    alert('Answer is correct !');
+document.getElementById("p3").innerHTML = "Correct!";
+document.getElementById("p3").style.backgroundColor = "#90EE90";
+  } else {
+//    alert('Answer is wrong');
+document.getElementById("p3").innerHTML = "Wrong";
+document.getElementById("p3").style.backgroundColor = "#ff6666";
+  }
+};
+</script>
+
+
+<br>
+<p>3.  If a firm increases its profit margin, its IGR and SGR _______.  </p>
+<form >
+<input type="radio" name="choice3" value="Correct"> Increase<br>
+<input type="radio" name="choice3" value="Incorrect"> Decrease<br>
+<input type="radio" name="choice3" value="Incorrect"> Are unchanged
+</form>
+<button onclick="submitAnswer3()">Submit Answer</button>
+<span id="p3"></span>
+</div>
+</div>
+
+<div id="outline-container-orgc9369a4" class="outline-2">
+<h2 id="orgc9369a4"><span class="section-number-2">13.</span> <a href="https://en.wikipedia.org/wiki/Flesch%25E2%2580%2593Kincaid_readability_tests">Reading Ease Score</a></h2>
+<div class="outline-text-2" id="text-13">
+<pre class="example">
+
+"Flesch-Kincaid reading ease score: 91.07 Very easy (5th grade)"
+</pre>
+
+
+<pre class="example">
+
+"Flesch-Kincaid grade level score: 2.92"
+</pre>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Matt Brigida, Ph.D.</p>
+<p class="date">Created: 2021-08-09 Mon 16:32</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

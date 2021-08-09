@@ -2,13 +2,113 @@
 #+author: Matt Brigida, Ph.D.
 #+SETUPFILE: https://fniessen.github.io/org-html-themes/org/theme-readtheorg.setup
 
-* Definition of Equity
+* Definition and Value of Equity
 
 Remember:
 
-#+begin_example
+#+begin_quote
 Equity holders have a residual claim on the firm's cash flow.  So the cash flow paid to shareholders is simply whaever is left over after paying the firm's expenses and what the bondholders are owed.
-#+end_example
+#+end_quote
+
+Therefore the value of this equity is simply:
+
+#+begin_quote
+The present value of the firm's expected residual cash flows, discounted at a risk appropriate rate.
+#+end_quote
+
+Equity also affords ownership, but here we will ignore any value that this imparts.  Ownership would only be relevant if we were to buy a block of stock large enough to affect the composition of the Board of Directors.
+
+* Discounted Dividends
+
+The value of any asset is simply the present value of the future cash flows you expect to receive from the asset.
+
+- In the case of stock, this means the present value of expected future dividends.
+
+But what if the stock doesn't pay dividends?
+
+-  All stock will at some point return cash back to stockholders (i.e., pay dividends).  It is common for young firms to keep cash as retained earnings to fuel growth.  Eventually though, like Apple Inc., every company returns cash to shareholders.
+
+-  Another way to think about it is, how much would you pay for a stock for which you never expected to receive cash?  Certainly nothing.
+
+
+
+* Cash Flow Structure
+
+The first step in valuing a stock by discounted dividends is to project what the future dividends will be.  It is common to divide possible future structures into 3 cases.
+
+1.  Constant dividends.
+2.  Constant *growth rate* in dividends.
+3.  Nonconstant growth in dividends.
+
+
+
+* Constant Dividends
+
+If we assume a stock's dividends will be constant, and since companies are infinitely lived, the dividends are in the form of a perpetuity.  Letting $D$ be the constant dividend and $k$ be the discount rate we'll apply to the dividends ($k$ comes from something like the Capital Asset Pricing Model, or [CAPM](http://www.5minutefinance.org/concepts/the-capital-asset-pricing-model), and is a function of the risk in the cash flows), we can value the stock as:
+
+$V_0 = \sum_{t=1}^\infty {\frac{D}{(1+k)^t}} = \frac{D}{k}$
+
+where $V_0$ is the value of the stock today (time 0).
+
+- Note this uses the formula for the present value of a perpetuity. 
+
+
+
+* Constant Dividends Example
+
+For all the following examples say the stock pays annual dividends.  Say we expect a stock to pay a constant dividend of \$10 per share.  The discount rate is 10%. Then the stock value is:
+
+- $V_0 = \frac{D}{k} = \frac{\$10}{0.1} = \$100$
+
+
+
+* Constant Growth Rate in Dividends
+
+A more realistic assumption is to say that dividends will grow at a constant rate $g$.  If this is the case then the value of the stock is:
+
+$V_0 = \sum_{t=1}^\infty {\frac{D_1(1+g)^t}{(1+k)^t}} = \frac{D_1}{k-g}$
+
+assuming $k>g$.  Note if $k<g$ then the sum would be $\infty$ and the last equality would not hold.  Note also we cannot have $k = g$ or you would divide by $0$ which is undefined.  
+
+- This formula is the present value of a growing perpetuity.
+
+
+
+* Constant Growth Rate Example
+
+Say a firm will pay a \$5 dividend next year, and dividends are expected to grow at 8% forever.  The discount rate is 12%.  Then today's value of the stock is:
+
+- $V_0 = \frac{D_1}{k - g} = \frac{\$5}{0.12 - 0.08} = \$125$
+
+
+
+* Example Continued
+
+Sometimes this is asked in a trickier fashion.  Instead, say the firm *just paid* a \$5 dividend.  Again, assume dividends are expected to grow at 8% forever, and the discount rate is 12%.  In this case, what is the value of the stock today?
+
+-  To use the present value of a perpetuity formula, we need next year's dividend.  We can find it easily because it will be 8% greater than last year's.  So we have $D_1 = D_0(1+g) = \$5(1.08) = \$5.40$.  This uses the time-value-of-money formula $FV = PV(1+r)^t$.
+
+- Now we can find the value of the stock with: $V_0=\frac{D_1}{k-g}=\frac{\$5.40}{0.12-0.08} = \$135$
+
+
+
+* Nonconstant Growth in Dividends
+
+This covers all other cases.  The most common scenarios are:
+
+1.  The firm pays no dividend for a number of years, after which point the firm pays a dividend which grows at some constant rate.
+
+2.  The firm's dividends grow at rate $g_1$ for a number of years, then grow at $g_2$ thereafter.  
+
+
+
+* Example of Nonconstant Growth
+
+As an example of scenario 1, say a firm is not expected to pay dividends for the next 8 years.  In year 9 the firm will pay a \$5 dividend which is expected to grow at 3% thereafter.  The discount rate $k$ is 7%.
+
+-  We can use the formula for the value of a growing perpetuity to find the value of the stock in year 8.  $V_8 = \frac{D_9}{k-g} = \frac{\$5}{0.07 - 0.03} = \$125$
+
+- Now we just need to discount this value back to today: $V_0 = \frac{\$125}{(1.07^8)} = \$72.75$
 
 
 
@@ -20,12 +120,13 @@ Equity holders have a residual claim on the firm's cash flow.  So the cash flow 
 
 var calculate = function() {
 
-  var roe = Number(document.getElementById("roe").value);
-  var b = Number(document.getElementById("b").value);
+  var dividend_next_year = Number(document.getElementById("dividend").value);
+  var g = Number(document.getElementById("g").value);
+  var r = Number(document.getElementById("r").value);
 
-  var sgr = (roe * b) / (1 - roe * b);
+  var price = dividend_next_year / (r - g);
   
-  document.getElementById("out_sgr").innerHTML = sgr.toFixed(4);
+  document.getElementById("out_price").innerHTML = price.toFixed(2);
 
 }
 
@@ -33,7 +134,7 @@ var calculate = function() {
 
 <body class="all">
   <h3>
-    SGR Calculator
+    Stock Price Calculator (Constant Gowth)
   </h3>
 
   <div class="row">
@@ -41,12 +142,16 @@ var calculate = function() {
     <div class="column">
       <table style="width:100%">
         <tr>
-          <th align="left">ROE:</th>
-          <th><input id="roe" value="0.15" style="width: 50px"></th>
+          <th align="left">Dividend Next Year:</th>
+          <th><input id="dividend" value="5" style="width: 50px"></th>
         </tr>
         <tr>
-          <th align="left">Plowback Ratio:</th>
-          <th><input id="b" value="0.2" style="width: 50px"></th>
+          <th align="left">Dividend Growth Rate:</th>
+          <th><input id="g" value="0.07" style="width: 50px"></th>
+        </tr>
+	<tr>
+	<th align="left">Discount Rate:</th>
+        <th><input id="r" value="0.1" style="width: 50px"></th>
         </tr>
       </table>
       <button onclick="calculate()">
@@ -55,7 +160,7 @@ var calculate = function() {
     </div>
 
     <div class="column">
-    <p><b>SGR: <span id="out_sgr"></span></b></p>
+    <p><b>Stock Price: <span id="out_price"></span></b></p>
     </div>
 
   </div>
@@ -66,6 +171,7 @@ var calculate = function() {
 
 #+END_EXPORT
 
+#+begin_comment
 #+BEGIN_EXPORT html
 <style>
 .fiddle iframe {
@@ -81,6 +187,7 @@ height: 300px //you can manually change this height
 #+BEGIN_EXPORT html :eval no
 <iframe width="100%" height="300" src="https://jsfiddle.net/mbkr1/jnzv5de1/embedded/js,html,css,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest frameborder="0"></iframe>
 #+END_EXPORT
+#+end_comment
 
 
 
@@ -119,12 +226,12 @@ document.getElementById("p1").style.backgroundColor = "#ff6666";
 
 
 
-<p>1. Assume Utica Boiler Inc has a 15% ROE and 40% payout ratio.  What is the maximum rate the firm can grow while maintining a constant total debt ratio and not selling any new stock?</p>
+<p>1. A stock pays a constant annual dividend of $10.  Its discount rate is 10%.  What is the value of the stock today?</p>
 <form >
-<input type="radio" name="choice" value="Incorrect"> 1.44%<br>
-<input type="radio" name="choice" value="Correct"> 6.38%<br>
-<input type="radio" name="choice" value="Incorrect"> 15.00%<br>
-<input type="radio" name="choice" value="Incorrect"> 33.12%
+<input type="radio" name="choice" value="Incorrect"> $23<br>
+<input type="radio" name="choice" value="Incorrect"> $63<br>
+<input type="radio" name="choice" value="Correct"> $100<br>
+<input type="radio" name="choice" value="Incorrect"> $1000
 </form>
 <button onclick="submitAnswer1()">Submit Answer</button>
 <span id="p1"></span>
